@@ -118,6 +118,10 @@
   list-style: none;
   font-weight: bold;
   font-size: 1.2rem;
+  cursor: pointer;
+}
+.nav ul li:hover {
+  color: rgba(0, 0, 0, 0.6);
 }
 /* blogs */
 .blogs {
