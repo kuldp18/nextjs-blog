@@ -1,12 +1,25 @@
 import styles from '../styles/Blog.module.css';
+import blogData from '../blog-data/blogs.json';
 import Link from 'next/link';
 
 const Blog = () => {
+  // TODO: step1: collect all the files from blogdata dir
+
+  // TODO: step2: iterate through them and display them
+
   return (
     <main className={styles.main}>
       <div className={styles.blogs}>
         <h2 style={{ fontSize: '2rem' }}>Blogs</h2>
-        <div className="blog-item">
+        {blogData.map(({ title, slug, description }) => (
+          <div className="blog-item" key={slug}>
+            <Link href={`/blogpost/${slug}`}>
+              <h3 className={styles.blogItemh3}>{title}</h3>
+            </Link>
+            <p>{description}</p>
+          </div>
+        ))}
+        {/* <div className="blog-item">
           <Link href="/blogpost/learn-javascript-2022">
             <h3 className={styles.blogItemh3}>
               How to learn JavaScript in 2022?
@@ -43,7 +56,7 @@ const Blog = () => {
             incidunt aperiam quo. Sed maxime eligendi harum quis adipisci dolor
             autem aliquid delectus omnis.
           </p>
-        </div>
+        </div> */}
       </div>
     </main>
   );
