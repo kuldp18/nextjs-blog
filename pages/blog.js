@@ -3,10 +3,6 @@ import blogData from '../blog-data/blogs.json';
 import Link from 'next/link';
 
 const Blog = () => {
-  // TODO: step1: collect all the files from blogdata dir
-
-  // TODO: step2: iterate through them and display them
-
   return (
     <main className={styles.main}>
       <div className={styles.blogs}>

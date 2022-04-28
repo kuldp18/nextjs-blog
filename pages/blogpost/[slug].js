@@ -3,8 +3,6 @@ import styles from '../../styles/BlogPost.module.css';
 import blogs from '../../blog-data/blogs.json';
 
 const PostSlug = () => {
-  // TODO: step1: find corresponding file to slug
-  // TODO: step2: populate them inside the page
   const router = useRouter();
   const { slug } = router.query;
   const blog = blogs.filter((blog) => blog.slug === slug);
