@@ -1,10 +1,11 @@
 import styles from '../styles/Blog.module.css';
 import blogData from '../blog-data/blogs.json';
 import Link from 'next/link';
-
+import CustomHead from '../components/CustomHead';
 const Blog = () => {
   return (
     <main className={styles.main}>
+      <CustomHead title="Blog - Hunting Coder" />
       <div className={styles.blogs}>
         <h2 style={{ fontSize: '2rem' }}>Blogs</h2>
         {blogData.map(({ title, slug, description }) => (
