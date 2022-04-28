@@ -13,7 +13,6 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* navbar */}
 
       <main className={styles.main}>
         <h1 className={styles.title}>Hunting Coder</h1>

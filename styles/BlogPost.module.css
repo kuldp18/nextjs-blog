@@ -1,0 +1,28 @@
+.main {
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2rem;
+  align-items: center;
+  width: 100%;
+}
+.content {
+  width: 80%;
+  text-align: justify;
+}
+.blogTitle {
+  font-size: 2rem;
+}
+@media (max-width: 600px) {
+  .main {
+    padding: 1rem;
+  }
+  .content {
+    width: 95%;
+  }
+  .blogTitle {
+    font-size: 1.5rem;
+  }
+}
