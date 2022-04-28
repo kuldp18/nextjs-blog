@@ -1,59 +1,38 @@
+import { useEffect, useState } from 'react';
 import styles from '../styles/Blog.module.css';
-import blogData from '../blog-data/blogs.json';
-import Link from 'next/link';
 import CustomHead from '../components/CustomHead';
+import BlogItem from '../components/BlogItem';
 const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+  const getAllBlogs = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/blogs');
+      const data = await response.json();
+      setBlogs(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    getAllBlogs();
+  }, []);
   return (
     <main className={styles.main}>
       <CustomHead title="Blog - Hunting Coder" />
       <div className={styles.blogs}>
         <h2 style={{ fontSize: '2rem' }}>Blogs</h2>
-        {blogData.map(({ title, slug, description }) => (
-          <div className="blog-item" key={slug}>
-            <Link href={`/blogpost/${slug}`}>
-              <h3 className={styles.blogItemh3}>{title}</h3>
-            </Link>
-            <p>{description}</p>
-          </div>
-        ))}
-        {/* <div className="blog-item">
-          <Link href="/blogpost/learn-javascript-2022">
-            <h3 className={styles.blogItemh3}>
-              How to learn JavaScript in 2022?
-            </h3>
-          </Link>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            ipsa, adipisci repellendus tenetur, non harum nam voluptates
-            pariatur, necessitatibus sit sunt ullam ducimus ut vitae quia
-            incidunt aperiam quo. Sed maxime eligendi harum quis adipisci dolor
-            autem aliquid delectus omnis.
-          </p>
-        </div>
-        <div className="blog-item">
-          <h3 className={styles.blogItemh3}>
-            How to learn JavaScript in 2022?
-          </h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            ipsa, adipisci repellendus tenetur, non harum nam voluptates
-            pariatur, necessitatibus sit sunt ullam ducimus ut vitae quia
-            incidunt aperiam quo. Sed maxime eligendi harum quis adipisci dolor
-            autem aliquid delectus omnis.
-          </p>
-        </div>
-        <div className="blog-item">
-          <h3 className={styles.blogItemh3}>
-            How to learn JavaScript in 2022?
-          </h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-            ipsa, adipisci repellendus tenetur, non harum nam voluptates
-            pariatur, necessitatibus sit sunt ullam ducimus ut vitae quia
-            incidunt aperiam quo. Sed maxime eligendi harum quis adipisci dolor
-            autem aliquid delectus omnis.
-          </p>
-        </div> */}
+        {/* rendering all blogs */}
+        {blogs.map((blog) => {
+          const { title, slug, description } = blog;
+          return (
+            <BlogItem
+              title={title}
+              slug={slug}
+              description={description}
+              key={slug}
+            />
+          );
+        })}
       </div>
     </main>
   );

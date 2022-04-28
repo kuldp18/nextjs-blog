@@ -1,13 +1,26 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../../styles/BlogPost.module.css';
-import blogs from '../../blog-data/blogs.json';
 
 const PostSlug = () => {
+  const [blog, setBlog] = useState('');
   const router = useRouter();
   const { slug } = router.query;
-  const blog = blogs.filter((blog) => blog.slug === slug);
-  const blogObj = blog[0];
-  const { title, content } = blogObj;
+  const fetchBlog = async (slug) => {
+    try {
+      const res = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
+      const data = await res.json();
+      setBlog(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlog(slug);
+  }, []);
+
+  const { title, content } = blog;
   return (
     <main className={styles.main}>
       <h1 className={styles.blogTitle}>{title}</h1>
