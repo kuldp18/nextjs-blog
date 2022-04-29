@@ -20,7 +20,7 @@ const Blog = () => {
     <main className={styles.main}>
       <CustomHead title="Blog - Hunting Coder" />
       <div className={styles.blogs}>
-        <h2 style={{ fontSize: '2rem' }}>Blogs</h2>
+        <h2 style={{ fontSize: '2.5rem' }}>Blogs</h2>
         {/* rendering all blogs */}
         {blogs.map((blog) => {
           const { title, slug, description } = blog;
