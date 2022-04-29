@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styles from '../../styles/BlogPost.module.css';
+import CustomHead from '../../components/CustomHead';
 
 const PostSlug = (props) => {
   const [blog, setBlog] = useState(props.blog);
@@ -7,6 +8,7 @@ const PostSlug = (props) => {
   const { title, content } = blog;
   return (
     <main className={styles.main}>
+      <CustomHead title={`${title} | Hunting Coder`} />
       <h1 className={styles.blogTitle}>{blog && title}</h1>
       <hr />
       <div className={styles.content}>{blog && content}</div>
