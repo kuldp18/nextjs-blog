@@ -23,9 +23,9 @@ const PostSlug = () => {
   const { title, content } = blog;
   return (
     <main className={styles.main}>
-      <h1 className={styles.blogTitle}>{title}</h1>
+      <h1 className={styles.blogTitle}>{blog && title}</h1>
       <hr />
-      <div className={styles.content}>{content}</div>
+      <div className={styles.content}>{blog && content}</div>
     </main>
   );
 };
