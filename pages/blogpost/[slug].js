@@ -1,24 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
 import styles from '../../styles/BlogPost.module.css';
 
-const PostSlug = () => {
-  const [blog, setBlog] = useState('');
-  const router = useRouter();
-  const { slug } = router.query;
-  const fetchBlog = async (slug) => {
-    try {
-      const res = await fetch(`http://localhost:3000/api/getblog?slug=${slug}`);
-      const data = await res.json();
-      setBlog(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchBlog(slug);
-  }, []);
+const PostSlug = (props) => {
+  const [blog, setBlog] = useState(props.blog);
 
   const { title, content } = blog;
   return (
@@ -29,5 +13,16 @@ const PostSlug = () => {
     </main>
   );
 };
+
+export async function getServerSideProps(context) {
+  const response = await fetch(
+    `http://localhost:3000/api/getblog?slug=${context.query.slug}`
+  );
+  const blog = await response.json();
+
+  return {
+    props: { blog }, // will be passed to the page component as props
+  };
+}
 
 export default PostSlug;
