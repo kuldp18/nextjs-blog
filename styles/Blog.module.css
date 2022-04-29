@@ -16,4 +16,10 @@
 .blogItemh3 {
   cursor: pointer;
   font-size: 1.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.blogTitleh2 {
+  font-size: 2.5rem;
 }
