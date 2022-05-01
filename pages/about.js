@@ -1,9 +1,11 @@
 import CustomHead from '../components/CustomHead';
+import styles from '../styles/About.module.css';
 const About = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <CustomHead title="About - Hunting Coder" />
-      About
+      <h1>About Me 😎</h1>
+      <p>Nothing here right now.</p>
     </div>
   );
 };
