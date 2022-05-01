@@ -28,7 +28,7 @@ const Blog = (props) => {
 };
 
 export async function getServerSideProps(context) {
-  const response = await fetch('http://localhost:3000/api/blogs');
+  const response = await fetch('https://hunting-coder.vercel.app/api/blogs');
   const blogs = await response.json();
 
   return {

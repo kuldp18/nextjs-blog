@@ -27,7 +27,7 @@ const PostSlug = (props) => {
 
 export async function getServerSideProps(context) {
   const response = await fetch(
-    `http://localhost:3000/api/getblog?slug=${context.query.slug}`
+    `https://hunting-coder.vercel.app/api/getblog?slug=${context.query.slug}`
   );
   const blog = await response.json();
 

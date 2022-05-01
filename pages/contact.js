@@ -9,14 +9,17 @@ const Contact = () => {
   const [status, setStatus] = useState('');
 
   const postContactInfo = async (name, email, message) => {
-    const res = await fetch('http://localhost:3000/api/postcontact', {
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, message }),
-    });
+    const res = await fetch(
+      'https://hunting-coder.vercel.app/api/postcontact',
+      {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, message }),
+      }
+    );
 
     return res.json();
   };
